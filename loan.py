@@ -2,23 +2,21 @@
 
 #ALGORITHM
 #Import necessary functions and libraries
-#Welcome the user to system
+#Welcome the user to system and tell them which inputs are required
 #Ask user if they have a total principal or monthly payment amount to input
-#Ask the user for terms of loan: principal/payment, interest rate, years
+#Ask the user for terms of loan and validate: principal/payment, interest rate, years
 #Calculate the principal/payment not provided by the user
-#Ask user if they want the amortization schedule/graph
 #Create payment schedule with monthly balances
 #Create comparison graph and output to screen
-#Ask user if they wish to export the schedule
-#Create CSV of amortization schedule
+#Export amortization schedule to CSV file
 
 #IMPORT LIBRARIES AND FUNCTIONS
 from datetime import date, datetime #date validation
 from loan_calc_functions import * #import custom functions
 
-#NEEDS TO BE INSTALLED
+#NEEDS TO BE ***MANUALLY*** INSTALLED PRIOR TO RUNNING
 import pandas as pd #used to help covert to csv, (pip install pandas)
-import matplotlib.stackplot as splt #display graph of payments over time (pip install matplotlib)
+#import matplotlib.stackplot as splt #display graph of payments over time (pip install matplotlib) 
 
 user_prin = 0.00
 user_pmt = 0.00

@@ -246,7 +246,7 @@ def amortization_schedule(user_prin, user_pmt, user_irate, user_term, user_start
 
     return schedule
 
-#FUNCTION TO GENERATE A GRAPH
+#FUNCTION TO GENERATE A GRAPH - NOT FUNCTIONING IN THIS VERSION YET
 def graph(schedule):
     months = [row["Month #"] for row in schedule]
     principal = [row["Principal Paid"] for row in schedule]
