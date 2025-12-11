@@ -148,7 +148,7 @@ def reqvalidation(): #loop to determine payment calculation required and necessa
             elif calctype == 3:
                 exit()
             else: 
-                print("else function 155")
+                print("else function 151. How did you manage to escape to the back rooms?")
                 iscontinued = False
     displayinput(user_prin, user_pmt, user_irate, user_term, user_date)
     
@@ -165,7 +165,7 @@ def reqvalidation(): #loop to determine payment calculation required and necessa
 
         schedule.append({
             "Month": month,
-            "Date": current_date.strftime("%B %Y"), 
+            "Date": current_date.strftime("%B %d %Y"), 
             "Payment": round(user_pmt, 2),
             "Principal Paid": round(principal_paid, 2),
             "Interest Paid": round(interest, 2),
@@ -173,7 +173,8 @@ def reqvalidation(): #loop to determine payment calculation required and necessa
         })
         current_date = add_month(current_date)
 
-    for row in schedule[:12]: #print the first 12 months to review
+    print("First 12 months of payments:")
+    for row in schedule[:12]: #print the first 12 months to screen
         print(row)    
     
     schedule_csv = pd.DataFrame(schedule, columns=[
@@ -192,13 +193,12 @@ def reqvalidation(): #loop to determine payment calculation required and necessa
 
 #DISPLAY INPUTS 
 def displayinput(user_prin, user_pmt, user_irate, user_term, user_date): #display rounded user inputs
-    print("Summary of User Inputs")
+    print("Summary of Inputs for Calculation")
     print(f"Principal amount: ${user_prin:.2f}")
     print(f"Payment amount: ${user_pmt:.2f}")
     print(f"Interest rate: {user_irate * 100}%")
     print(f"Term length: {user_term} years")
-    print(f"Start Date: {user_date}")
-    print("First 12 months of payments:")
+    print(f"Payment Start Date: {user_date}")
     
     return(user_prin, user_pmt, user_irate, user_term, user_date)
 
