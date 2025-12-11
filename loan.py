@@ -16,7 +16,6 @@ from loan_calc_functions import * #import custom functions
 
 #NEEDS TO BE ***MANUALLY*** INSTALLED PRIOR TO RUNNING
 import pandas as pd #used to help covert to csv, (pip install pandas)
-#import matplotlib.stackplot as splt #display graph of payments over time (pip install matplotlib) NEEDS FIXING
 
 user_prin = 0.00
 user_pmt = 0.00
