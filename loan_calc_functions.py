@@ -242,13 +242,13 @@ def amortization_schedule(user_prin, user_pmt, user_irate, user_term, user_start
     for row in schedule[:12]: #print the first 12 months to review
         print(row)
     
-    graph(schedule)
+
 
     return schedule
 
 #FUNCTION TO GENERATE A GRAPH
 def graph(schedule):
-    months = [row["Month"] for row in schedule]
+    months = [row["Month #"] for row in schedule]
     principal = [row["Principal Paid"] for row in schedule]
     interest = [row["Interest Paid"] for row in schedule]
 
