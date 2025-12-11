@@ -15,8 +15,10 @@
 
 #IMPORT LIBRARIES AND FUNCTIONS
 from datetime import date, datetime #date validation
-import pandas as pd #used to help covert to csv
-import matplotlib.stackplot as splt #display graph of payments over time
+
+#NEEDS TO BE INSTALLED
+import pandas as pd #used to help covert to csv, (pip install pandas)
+import matplotlib.stackplot as splt #display graph of payments over time (pip install matplotlib)
 
 from loan_calc_functions import * #import custom functions
 
@@ -26,5 +28,5 @@ user_irate = 0.01
 user_term = 1
 user_start = date(2026,1,1)
 
-print("Welcome to the loan calculator. Pleaase be prepared to enter principal/payment, interest rate, term, and start date.")
+print("Welcome to the loan calculator. Pleaase be prepared to enter principal/payment, interest rate, term, and first payment start date.")
 reqvalidation() #requests and validates data from user
