@@ -131,24 +131,24 @@ def reqvalidation(): #loop to determine payment calculation required and necessa
             calctype = int(calctype)  
             if calctype > 3 or calctype < 1:
                 print("Try entering one of the options in [brackets].")
-            elif calctype == 1:
+            elif calctype == 1: #validate inputs, calculate payment
                 user_prin = principalv()
                 user_irate = interestv()
                 user_term = termv()
                 user_pmt = paymentc(user_prin, user_irate, user_term)
                 user_date = datev()
                 iscontinued = False
-            elif calctype == 2:
+            elif calctype == 2: #validate inputs, calculate principal
                 user_pmt = paymentsv()
                 user_irate = interestv()
                 user_term = termv()
                 user_prin = principalc(user_pmt, user_irate, user_term)
                 user_date = datev()
                 iscontinued = False
-            elif calctype == 3:
+            elif calctype == 3: #exit program
                 exit()
             else: 
-                print("else function 151. How did you manage to escape to the back rooms?")
+                print("else function 151. How did you manage to escape the simulation into the back rooms?")
                 iscontinued = False
     displayinput(user_prin, user_pmt, user_irate, user_term, user_date)
     
@@ -158,20 +158,20 @@ def reqvalidation(): #loop to determine payment calculation required and necessa
     current_date = user_date
     schedule = []
 
-    for month in range(1, months + 1):
-        interest = balance * monthly_irate
-        principal_paid = user_pmt - interest
-        balance -= principal_paid
+    for month in range(1, months + 1): #loop through data until term is reached
+        interest = balance * monthly_irate #interest paid for the month
+        principal_paid = user_pmt - interest #principal paid for the month
+        balance -= principal_paid #remaining balance
 
-        schedule.append({
+        schedule.append({ #add information to new row in schedule for the month
             "Month": month,
             "Date": current_date.strftime("%B %d %Y"), 
-            "Payment": round(user_pmt, 2),
+            "Payment": round(user_pmt, 2), 
             "Principal Paid": round(principal_paid, 2),
             "Interest Paid": round(interest, 2),
             "Remaining Balance": round(max(balance, 0), 2)
         })
-        current_date = add_month(current_date)
+        current_date = add_month(current_date) #add 1 month and goes to the next item or continues if reached it's reaached the end of range
 
     print("First 12 months of payments:")
     for row in schedule[:12]: #print the first 12 months to screen
@@ -216,46 +216,14 @@ def add_month(d): #adds +1 month to the payment date from the amortization sched
 
     return date(year, month, day)
 
-#FUNCTION TO GENERATE AMORTIZATION SCHEDULE  
-def amortization_schedule(user_prin, user_pmt, user_irate, user_term, user_start):
-    monthly_irate = user_irate / 12
-    months = user_term * 12
-    balance = user_prin
-    current_date = user_start
-    schedule = []
-
-    for month in range(1, months + 1):
-        interest = balance * monthly_irate
-        principal_paid = user_pmt - interest
-        balance -= principal_paid
-
-        schedule.append({
-            "Month #": month,
-            "Date": current_date, 
-            "Payment": round(user_pmt, 2),
-            "Principal Paid": round(principal_paid, 2),
-            "Interest Paid": round(interest, 2),
-            "Remaining Balance": round(max(balance, 0), 2)
-        })
-        month += month
-
-    for row in schedule[:12]: #print the first 12 months to review
-        print(row)
-    
-
-
-    return schedule
-
 #FUNCTION TO GENERATE A GRAPH - NOT FUNCTIONING IN THIS VERSION YET
-def graph(schedule):
+def graph(schedule): 
     months = [row["Month #"] for row in schedule]
     principal = [row["Principal Paid"] for row in schedule]
     interest = [row["Interest Paid"] for row in schedule]
 
     splt.figure(figsize=(12, 6))
-
     splt.stackplot(months, principal, interest, labels=['Principal', 'Interest'])
-
     splt.title("Mortgage Payment Breakdown Over Time")
     splt.xlabel("Month")
     splt.ylabel("Amount ($)")
