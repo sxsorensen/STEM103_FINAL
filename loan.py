@@ -1,7 +1,7 @@
 #LOAN CALCULATOR
 
 #ALGORITHM
-#Import necessary functions and libraries
+#Import necessary functions and install libraries
 #Welcome the user to system and tell them which inputs are required
 #Ask user if they have a total principal or monthly payment amount to input
 #Ask the user for terms of loan and validate: principal/payment, interest rate, years
@@ -24,5 +24,5 @@ user_irate = 0.01
 user_term = 1
 user_start = date(2026,1,1)
 
-print("Welcome to the loan calculator. Pleaase be prepared to enter principal/payment, interest rate, term, and first payment due date.")
+print("Welcome to the loan calculator. Please be prepared to enter principal or payment amount, interest rate as decimal (aka 10% = .1), the term in years, and the first payment due date.")
 reqvalidation() #requests and validates data from user
