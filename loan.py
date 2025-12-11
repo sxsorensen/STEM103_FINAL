@@ -26,6 +26,5 @@ user_irate = 0.01
 user_term = 1
 user_start = date(2026,1,1)
 
-
-#print("Welcome to the loan calculator. Pleaase be prepared to enter principal/payment, interest rate, term, and start date.")
+print("Welcome to the loan calculator. Pleaase be prepared to enter principal/payment, interest rate, term, and start date.")
 reqvalidation() #requests and validates data from user
