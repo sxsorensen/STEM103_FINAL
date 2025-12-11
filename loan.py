@@ -12,15 +12,13 @@
 #Ask user if they wish to export the schedule
 #Create CSV of amortization schedule
 
-
 #IMPORT LIBRARIES AND FUNCTIONS
 from datetime import date, datetime #date validation
+from loan_calc_functions import * #import custom functions
 
 #NEEDS TO BE INSTALLED
 import pandas as pd #used to help covert to csv, (pip install pandas)
 import matplotlib.stackplot as splt #display graph of payments over time (pip install matplotlib)
-
-from loan_calc_functions import * #import custom functions
 
 user_prin = 0.00
 user_pmt = 0.00
