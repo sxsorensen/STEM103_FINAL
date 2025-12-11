@@ -86,8 +86,7 @@ def datev(): #while loop to check the start date, returns user_start
     iscontinued = True
     while iscontinued == True:
         user_date = input("Please enter the loan start date as YYYY-MM-DD: ")
-        #if stmt for null = today
-        if user_date == "":
+        if user_date == "": #if user hits enter, uses today's date
             user_start = date.today()
             iscontinued = False
         else:
@@ -131,24 +130,24 @@ def reqvalidation(): #loop to determine payment calculation required and necessa
             calctype = int(calctype)  
             if calctype > 3 or calctype < 1:
                 print("Try entering one of the options in [brackets].")
-            elif calctype == 1: #validate inputs, calculate payment
+            elif calctype == 1: #validate inputs, calculates payment
                 user_prin = principalv()
                 user_irate = interestv()
                 user_term = termv()
                 user_pmt = paymentc(user_prin, user_irate, user_term)
                 user_date = datev()
                 iscontinued = False
-            elif calctype == 2: #validate inputs, calculate principal
+            elif calctype == 2: #validate inputs, calculates principal
                 user_pmt = paymentsv()
                 user_irate = interestv()
                 user_term = termv()
                 user_prin = principalc(user_pmt, user_irate, user_term)
                 user_date = datev()
                 iscontinued = False
-            elif calctype == 3: #exit program
+            elif calctype == 3: #exits program
                 exit()
             else: 
-                print("else function 151. How did you manage to escape the simulation into the back rooms?")
+                print("else function 150. How did you manage to escape the simulation into the back rooms?")
                 iscontinued = False
     displayinput(user_prin, user_pmt, user_irate, user_term, user_date)
     
@@ -171,13 +170,13 @@ def reqvalidation(): #loop to determine payment calculation required and necessa
             "Interest Paid": round(interest, 2),
             "Remaining Balance": round(max(balance, 0), 2)
         })
-        current_date = add_month(current_date) #add 1 month and goes to the next item or continues if reached it's reaached the end of range
+        current_date = add_month(current_date) #add 1 month and goes to the next item or continues if it's reaached the end of range
 
     print("First 12 months of payments:")
     for row in schedule[:12]: #print the first 12 months to screen
         print(row)    
     
-    schedule_csv = pd.DataFrame(schedule, columns=[
+    schedule_csv = pd.DataFrame(schedule, columns=[ #coverts to columns
             "Month",
             "Date",
             "Payment",
@@ -186,7 +185,7 @@ def reqvalidation(): #loop to determine payment calculation required and necessa
             "Remaining Balance"
         ])
 
-    schedule_csv.to_csv("amortization_schedule.csv", index=False)
+    schedule_csv.to_csv("amortization_schedule.csv", index=False) #exports to CSV
     print("CSV exported successfully to amortization_schedule.csv.")
 
     return schedule
